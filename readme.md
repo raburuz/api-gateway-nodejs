@@ -13,6 +13,3 @@ API Gateway Node.js is a versatile and efficient gateway solution for managing a
 👨‍💻 Whether you're building a small-scale application or a large enterprise system, API Gateway Node.js provides the foundation for efficient communication between services while enforcing security and reliability.
 
 🚀 Start building your distributed systems with API Gateway Node.js today!
-
-📚 Explore our documentation: [Link to Documentation]
-💬 Join the discussion: [Link to Community Forum]
