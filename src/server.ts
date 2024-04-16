@@ -1,27 +1,36 @@
 /* EXPRESS */
 import express, { Application } from "express"
 
-/* APP */
-import { apiProxy } from "./proxy";
+/* Libraries */
+import helmet from "helmet";
+import cors from "cors"
 
-const port = 3000; 
+/* APP */
+import { useApiProxy } from "./utils/proxy";
+import { useAuth } from "./utils/auth";
+import { corsOptions } from "./lib/cors";
+import { routes } from "./routes"; 
 
 export const server = () => {
   
   const app: Application = express();
 
-  proxies(app);
+  middlewares(app);
   //Setup configuration Below
-  
+  useApiProxy(app, routes);
+  useAuth(app, routes);
   //Setup configuration Over
   listen(app);
-}  
+} 
 
-const proxies = ( app: Application ) => {
-  app.use("/api", apiProxy );
+const middlewares = ( app: Application ) => {
+  app.use(helmet());
+  app.use(cors(corsOptions));
 }
 
 const listen = ( app: Application ) => {
+
+  const port = process.env.PORT || 3000;
 
   app.listen( port, () => console.log(`Gateway running on port ${port}`) )
 }
