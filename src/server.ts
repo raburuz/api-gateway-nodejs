@@ -17,8 +17,8 @@ export const server = () => {
 
   middlewares(app);
   //Setup configuration Below
-  useApiProxy(app, routes);
   useAuth(app, routes);
+  useApiProxy(app, routes);
   //Setup configuration Over
   listen(app);
 } 
